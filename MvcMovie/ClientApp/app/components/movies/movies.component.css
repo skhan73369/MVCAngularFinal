@@ -1,0 +1,14 @@
+﻿tr:hover{
+    background-color: crimson;
+}
+a:hover {
+    background-color: forestgreen;
+}
+img{
+    height:175px;
+    width:220px;
+}
+.loading {
+    height: 175px;
+    width: 220px;
+}

@@ -1,0 +1,65 @@
+﻿<h1>Movie List</h1>
+<a class="btn btn-default" [routerLink]="['/createmovie/']">
+    <span></span> Create New
+</a>
+
+<form name="formsearchmovie" #movieForm="ngForm" (ngSubmit)="filter()">
+    <span>Search filter: </span>
+    <input name="searchTerm" [(ngModel)]="searchTerm" />
+    <input type="submit" class="btn btn-default" [routerLink]="['/movies/']"/>
+</form>
+<p 
+   *ngIf="!movies"><em>Loading...</em>
+    <td>
+        <img class="loading" src="https://media.giphy.com/media/FFPCjEwUzPU6k/giphy.gif" />
+    </td>
+</p>
+<table class="table" *ngIf="movies" >
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Publication Date</th>
+            <th>Genre</th>
+            <th>Price</th>
+            <th>Rating</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let movie of movies" >
+            <td>{{ movie.title }}</td>
+            <td>{{ movie.releaseDate | date:'MM/dd/yyyy'  }}</td>
+            <td>{{ movie.genre }}</td>
+            <td>{{ movie.price | currency:'USD':true}}</td>
+            <td>{{ movie.rating}}</td>
+            <td>
+                <a class="btn btn-default" [routerLink]="['/editmovie/', movie.id]">
+                    <span></span> Edit
+                </a>
+                <a class="btn btn-default" [routerLink]="['/moviedetails/', movie.id]">
+                    <span></span> Details
+                </a>
+                <a class="btn btn-default" [routerLink]="['/deletemovie/', movie.id]">
+                    <span></span> Delete
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<table>
+    <tr>
+        <td>
+            <img src="https://media.giphy.com/media/phmwMLY1kkkMg/giphy.gif" />
+        </td>
+        <td>
+            <img src="https://media.giphy.com/media/phmwMLY1kkkMg/giphy.gif" />
+        </td>
+        <td>
+            <img src="https://media.giphy.com/media/phmwMLY1kkkMg/giphy.gif" />
+        </td>
+        <td>
+            <img src="https://media.giphy.com/media/phmwMLY1kkkMg/giphy.gif" />
+        </td>
+    </tr>
+    
+</table>
